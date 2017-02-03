@@ -8,7 +8,7 @@ import seedu.addressbook.data.exception.IllegalValueException;
  */
 public class Address {
 
-    public static final String EXAMPLE = "123, some street";
+    public static final String EXAMPLE = "123, some street, #09-123, S123456";
     public static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses can be in any format";
     public static final String ADDRESS_VALIDATION_REGEX = ".+";
     public static final String COMMA = ",";
@@ -28,10 +28,10 @@ public class Address {
     public Address(String address, boolean isPrivate) throws IllegalValueException {
         String trimmedAddress = address.trim();
         String[] processAddress = trimmedAddress.split(",");
-        block = new Block(processAddress[0]);
-        street = new Street(processAddress[1]);
-        unit = new Unit(processAddress[2]);
-        postalCode = new PostalCode(processAddress[3]);
+        block = new Block(processAddress[0].trim());
+        street = new Street(processAddress[1].trim());
+        unit = new Unit(processAddress[2].trim());
+        postalCode = new PostalCode(processAddress[3].trim());
         this.isPrivate = isPrivate;
         if (!isValidAddress(trimmedAddress)) {
             throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);

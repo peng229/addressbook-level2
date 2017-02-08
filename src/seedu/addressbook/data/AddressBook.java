@@ -7,6 +7,7 @@ import seedu.addressbook.data.tag.UniqueTagList.*;
 import seedu.addressbook.data.tag.Tag;
 import seedu.addressbook.data.tag.Tagging;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -90,8 +91,9 @@ public class AddressBook {
      *
      * @throws DuplicateTagException if an equivalent tag already exists.
      */
-    public void addTag(Tag toAdd) throws DuplicateTagException {
+    public void addTag(Tag toAdd, Person targetPerson) throws DuplicateTagException {
         allTags.add(toAdd);
+        taggings.addTagging(toAdd.tagName, targetPerson);
     }
 
     /**
@@ -122,8 +124,9 @@ public class AddressBook {
      *
      * @throws TagNotFoundException if no such Tag could be found.
      */
-    public void removeTag(Tag toRemove) throws TagNotFoundException {
+    public void removeTag(Tag toRemove, Person targetPerson) throws TagNotFoundException {
         allTags.remove(toRemove);
+        taggings.removeTagging(toRemove.tagName, targetPerson);
     }
 
     /**
@@ -155,13 +158,14 @@ public class AddressBook {
                         && this.allPersons.equals(((AddressBook) other).allPersons)
                         && this.allTags.equals(((AddressBook) other).allTags));
     }
+    
     /**
      * Print out all the taggings. To be called when the program terminates.
-     * @param taggings
      */
-    public void printTaggings(Tagging...taggings) {
-    	for (Tagging i: taggings) {
-    		System.out.println(i);
+    public void printTaggings() {
+    	ArrayList<String> taggingsToBePrinted = taggings.getTagging();
+    	for (int i=0; i < taggingsToBePrinted.size(); i++) {
+    		System.out.println(taggingsToBePrinted.get(i));
     	}
     	
     }

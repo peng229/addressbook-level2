@@ -22,5 +22,9 @@ public class Tagging {
 		taggings.add("- " + targetPerson.getName().toString() + " [" + tag + "]");
 	}
 	
+	public ArrayList<String> getTagging() {
+		return this.taggings;
+	}
+	
 
 }

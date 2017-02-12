@@ -69,7 +69,7 @@ public class Name {
     	if(other.fullName.equals(this.fullName)) {
     		return true;
     	}
-    	if(isSimilarNameInDifferentCase(other)) {
+    	if(isSimilarNameInDifferentCaseAndSubset(other)) {
     		return true;
     	}
     	return false;
@@ -80,10 +80,10 @@ public class Name {
      * @param other
      * 
      */
-    public boolean isSimilarNameInDifferentCase (Name other) {
+    public boolean isSimilarNameInDifferentCaseAndSubset (Name other) {
     	String fullNameInLowerCase = this.fullName.toLowerCase();
     	String otherNameInLowerCase = other.fullName.toLowerCase();
-    	if(fullNameInLowerCase.equals(otherNameInLowerCase)) {
+    	if((fullNameInLowerCase.contains(otherNameInLowerCase)) || (otherNameInLowerCase.contains(fullNameInLowerCase))) {
     		return true;
     	} else {
     		return false;

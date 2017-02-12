@@ -59,5 +59,13 @@ public class Name {
     public int hashCode() {
         return fullName.hashCode();
     }
-
+    
+    /**
+     * Determines if two names are similar.
+     * @param Name other
+     * 
+     */
+    public boolean isSimilar(Name other) {
+    	return true;
+    }
 }

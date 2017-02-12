@@ -66,7 +66,9 @@ public class Name {
      * 
      */
     public boolean isSimilar(Name other) {
-    	
+    	if(other.fullName.equals(this.fullName)) {
+    		return true;
+    	}
     	return false;
     }
 }

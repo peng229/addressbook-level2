@@ -14,9 +14,9 @@ public class NameTest {
 	@Test
 	public void testSameName() throws IllegalValueException {
 		try {
-			Name first = new Name("Avery");
-			Name second = new Name("Avery");
-		}catch(IllegalValueException ie) {
+			first = new Name("Avery");
+			second = new Name("Avery");
+		} catch(IllegalValueException ie) {
 			throw new IllegalValueException("test names should be valid");
 		}
 			assertTrue(first.isSimilar(second));
@@ -26,8 +26,12 @@ public class NameTest {
 	
 	@Test
 	public void testDifferentCaseName() throws IllegalValueException {
-		first = new Name("Avery");
-		second = new Name("AVeRy");
+		try {
+			first = new Name("Avery");
+			second = new Name("AVeRy");
+		} catch(IllegalValueException ie) {
+			throw new IllegalValueException("test names should be valid");
+		}	
 		assertTrue(first.isSimilar(second));
 		assertTrue(second.isSimilar(first));
 	}

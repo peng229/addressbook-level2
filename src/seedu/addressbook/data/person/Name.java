@@ -69,6 +69,24 @@ public class Name {
     	if(other.fullName.equals(this.fullName)) {
     		return true;
     	}
+    	if(isSimilarNameInDifferentCase(other)) {
+    		return true;
+    	}
     	return false;
+    }
+    
+    /**
+     * Method to test if the 2 names are similar but in different cases.
+     * @param other
+     * 
+     */
+    public boolean isSimilarNameInDifferentCase (Name other) {
+    	String fullNameInLowerCase = this.fullName.toLowerCase();
+    	String otherNameInLowerCase = other.fullName.toLowerCase();
+    	if(fullNameInLowerCase.equals(otherNameInLowerCase)) {
+    		return true;
+    	} else {
+    		return false;
+    	}
     }
 }

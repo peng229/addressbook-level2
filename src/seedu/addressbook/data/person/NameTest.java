@@ -35,5 +35,26 @@ public class NameTest {
 		assertTrue(first.isSimilar(second));
 		assertTrue(second.isSimilar(first));
 	}
+	
+	@Test
+	public void testSubsetName() throws IllegalValueException {
+		try {	//true test case
+			first = new Name("Avery Bradley");
+			second = new Name("AveRy");	
+		} catch(IllegalValueException ie) {
+			throw new IllegalValueException("test names should be valid");
+		}
+		assertTrue(first.isSimilar(second));
+		assertTrue(second.isSimilar(first));
+		
+		try {	//false test case
+			first = new Name("Avery Bradley");
+			second = new Name("Charles Barkley");	
+		} catch(IllegalValueException ie) {
+			throw new IllegalValueException("test names should be valid");
+		}
+		assertFalse(first.isSimilar(second));
+		assertFalse(second.isSimilar(first));
+	}
 
 }
